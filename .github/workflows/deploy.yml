@@ -35,3 +35,6 @@ jobs:
         run: |
           bin/rails db:test:prepare
           bundle exec rspec
+
+      - name: Lint
+        run: bundle exec rubocop
