@@ -1,4 +1,6 @@
 AllCops:
+  SuggestExtensions: false
+  NewCops: disable
   Exclude:
     - 'db/**/*'
     - 'config/**/*'
@@ -10,3 +12,4 @@ AllCops:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+    
