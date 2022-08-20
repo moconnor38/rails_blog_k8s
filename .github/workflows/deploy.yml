@@ -34,4 +34,4 @@ jobs:
           PG_USER: postgres
         run: |
           bin/rails db:test:prepare
-          bin/rails test
+          bundle exec rspec
