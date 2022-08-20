@@ -4,6 +4,9 @@ AllCops:
     - 'config/**/*'
     - 'script/**/*'
     - 'bin/*'
+    - 'spec/{rails_helper.rb,spec_helper.rb}'
+    - 'config.ru'
+    - 'Rakefile'
 
 Style/FrozenStringLiteralComment:
   Enabled: false
