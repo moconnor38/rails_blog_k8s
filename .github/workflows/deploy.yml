@@ -43,6 +43,7 @@ jobs:
         run: bundle exec rubocop
 
       - name: Build image
+        run: |-
           docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
           docker build -t momconnor38/rails-blog-k8s:latest -t momconnor38/rails-blog-k8s:${{ env.SHA }} .
 
