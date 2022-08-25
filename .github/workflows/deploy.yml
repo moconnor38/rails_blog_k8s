@@ -60,7 +60,7 @@ jobs:
       - name: Set Project
         uses: google-github-actions/setup-gcloud@v0
         with:
-          project_id: rails-blog-360315 
+          project_id: '${{ secrets.GKE_PROJECT_ID }}' 
   
       - name: Auth
         run: |
@@ -69,7 +69,7 @@ jobs:
       - name: Get Credentials
         uses: google-github-actions/get-gke-credentials@v0
         with:
-          cluster_name: blog-cluster
+          cluster_name: '${{ secrets.GKE_CLUSTER_NAME }}'
           location: europe-west1-b 
 
       - name: Apply
