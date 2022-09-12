@@ -32,4 +32,5 @@
 
 /.vscode
 
+/terraform/terraform.tfvars
 /terraform/.terraform
