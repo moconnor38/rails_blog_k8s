@@ -1,0 +1,53 @@
+name: "CI/CD"
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  SHA: $(git rev-parse HEAD)
+
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:12
+        env:
+          POSTGRES_DB: blog_test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+        ports:
+          - "5432:5432"
+
+    steps:
+      - uses: actions/checkout@v3
+   
+      - name: Install Ruby and dependencies
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1.2
+      - run: bundle install
+
+      - name: Run tests
+        env:
+          DATABASE_URL: postgres://postgres:password@localhost:5432/blog_test
+          RAILS_ENV: test
+          PG_USER: postgres
+        run: |
+          bin/rails db:test:prepare
+          bundle exec rspec
+
+      - name: Lint
+        run: bundle exec rubocop
+
+      - name: Build image
+        run: |
+          docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
+          docker build -t momconnor38/rails-blog-k8s:latest -t momconnor38/rails-blog-k8s:${{ env.SHA }} .
+
+      - name: Push image
+        run: |
+          docker push momconnor38/rails-blog-k8s:latest
+          docker push momconnor38/rails-blog-k8s:${{ env.SHA }}
