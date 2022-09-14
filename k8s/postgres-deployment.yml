@@ -23,7 +23,7 @@ spec:
         - name: POSTGRES_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: pgpassword
+              name: blog-secrets
               key: PGPASSWORD
         ports:
         - containerPort: 5432
