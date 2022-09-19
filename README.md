@@ -1,24 +1,29 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+A Ruby on Rails blog orhestrated with Kubernetes. Deployed to a Google Cloud environment.
 
-* Ruby version
+## Aims
 
-* System dependencies
+1. Containerise a Ruby on Rails app and orchestrate containers with Kubernetes 
 
-* Configuration
+2. Develop a CI/CD pipeline to build, test and deploy the app using GitHub actions
 
-* Database creation
+3. Use Terraform to provision infrastructure
 
-* Database initialization
 
-* How to run the test suite
+---
 
-* Services (job queues, cache servers, search engines, etc.)
+## Run Locally
 
-* Deployment instructions
+To run locally
 
-* ...
+`docker-compose up`
+
+---
+## Deployment
+A [Google Cloud](https://cloud.google.com/docs/overview#projects) account is needed
+
+Instructions...
+
+
