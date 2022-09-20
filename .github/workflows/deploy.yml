@@ -3,6 +3,9 @@ name: "Deploy"
 on:
   workflow_dispatch:
 
+env:
+  SHA: $(git rev-parse HEAD)
+  
 jobs:
   Deploy:
     runs-on: ubuntu-latest
